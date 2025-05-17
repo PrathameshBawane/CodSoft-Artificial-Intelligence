@@ -2,9 +2,12 @@ import streamlit as st
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
+import os
 
-# Load data
-df = pd.read_csv('movies.csv')
+# Safe and deployment-friendly path
+file_path = os.path.join(os.path.dirname(__file__), 'movies.csv')
+df = pd.read_csv(file_path)
+
 
 # Vectorize descriptions
 tfidf = TfidfVectorizer(stop_words='english')
